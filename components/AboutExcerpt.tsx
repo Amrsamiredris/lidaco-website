@@ -1,17 +1,18 @@
 import { Button } from "./Button";
 import { Eyebrow } from "./Eyebrow";
+import { ProductImage } from "./ProductImage";
 
 export function AboutExcerpt() {
   return (
     <section className="py-24">
       <div className="wrap">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-[60px] items-center">
-          {/* Placeholder Image */}
-          <div className="aspect-[4/3] rounded-[4px] bg-gradient-to-br from-lid-brown-800 to-lid-brown-950 grid place-items-center">
-            <span className="text-[30px] opacity-40 text-lid-gold-500">
-              &#10022;
-            </span>
-          </div>
+          <ProductImage
+            kind="orchard"
+            alt="Date palm orchards in Bam, Iran"
+            className="aspect-[4/3] rounded-[4px]"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
 
           {/* Content */}
           <div>

@@ -1,53 +1,70 @@
-import type { Product } from "./data";
+import type { Product, ProductImageSlug } from "./data";
 
 export type ProductKind = Product["kind"];
 
-export type ProductImageKey =
-  | "date"
-  | "pistachio"
-  | "orchard"
-  | "quality";
+export type EditorialImageKey = "orchard" | "quality";
+
+export type ProductImageKey = ProductImageSlug | EditorialImageKey;
+
+const DATE_BLUR =
+  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEAwEPwAB//9k=";
+
+const PIST_BLUR =
+  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEAwEPwAB//9k=";
 
 const PRODUCT_IMAGES: Record<
   ProductImageKey,
   { src: string; blurDataURL: string }
 > = {
-  date: {
-    src: "/products/date-placeholder.svg",
-    blurDataURL:
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTInIGhlaWdodD0nNycgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cmVjdCB3aWR0aD0nMTInIGhlaWdodD0nNycgZmlsbD0nIzNEQTFBQyIvPjwvc3ZnPg==",
+  "bam-mazafati": {
+    src: "/products/bam-mazafati.jpg",
+    blurDataURL: DATE_BLUR,
   },
-  pistachio: {
-    src: "/products/pistachio-placeholder.svg",
-    blurDataURL:
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTInIGhlaWdodD0nNycgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cmVjdCB3aWR0aD0nMTInIGhlaWdodD0nNycgZmlsbD0nIzJBMzAxOCIvPjwvc3ZnPg==",
+  rabi: { src: "/products/rabi.jpg", blurDataURL: DATE_BLUR },
+  kabkab: { src: "/products/kabkab.jpg", blurDataURL: DATE_BLUR },
+  piarom: { src: "/products/piarom.jpg", blurDataURL: DATE_BLUR },
+  akbari: { src: "/products/akbari.jpg", blurDataURL: PIST_BLUR },
+  "ahmad-aghaei": {
+    src: "/products/ahmad-aghaei.jpg",
+    blurDataURL: PIST_BLUR,
+  },
+  fandoghi: { src: "/products/fandoghi.jpg", blurDataURL: PIST_BLUR },
+  "kalleh-ghouchi": {
+    src: "/products/kalleh-ghouchi.jpg",
+    blurDataURL: PIST_BLUR,
+  },
+  "pistachio-kernels": {
+    src: "/products/pistachio-kernels.jpg",
+    blurDataURL: PIST_BLUR,
+  },
+  "pistachio-powder": {
+    src: "/products/pistachio-powder.jpg",
+    blurDataURL: PIST_BLUR,
   },
   orchard: {
-    src: "/products/orchard-placeholder.svg",
-    blurDataURL:
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTInIGhlaWdodD0nOScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cmVjdCB3aWR0aD0nMTInIGhlaWdodD0nOScgZmlsbD0nIzJBMzAxOCIvPjwvc3ZnPg==",
+    src: "/products/orchard.jpg",
+    blurDataURL: DATE_BLUR,
   },
   quality: {
-    src: "/products/quality-placeholder.svg",
-    blurDataURL:
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTInIGhlaWdodD0nOScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cmVjdCB3aWR0aD0nMTInIGhlaWdodD0nOScgZmlsbD0nIzNEQTFBQyIvPjwvc3ZnPg==",
+    src: "/products/quality-inspection.jpg",
+    blurDataURL: DATE_BLUR,
   },
 };
 
 export function getProductImageKey(
-  productOrKind: Product | ProductKind | ProductImageKey
+  productOrKey: Product | ProductImageKey | ProductKind
 ): ProductImageKey {
-  if (typeof productOrKind === "string") {
-    if (productOrKind === "date" || productOrKind === "pist") {
-      return productOrKind === "pist" ? "pistachio" : "date";
-    }
-
-    return productOrKind;
+  if (typeof productOrKey === "string") {
+    if (productOrKey === "date") return "bam-mazafati";
+    if (productOrKey === "pist") return "akbari";
+    return productOrKey;
   }
 
-  return productOrKind.kind === "pist" ? "pistachio" : "date";
+  return productOrKey.image;
 }
 
-export function getProductImage(productOrKind: Product | ProductKind | ProductImageKey) {
-  return PRODUCT_IMAGES[getProductImageKey(productOrKind)];
+export function getProductImage(
+  productOrKey: Product | ProductImageKey | ProductKind
+) {
+  return PRODUCT_IMAGES[getProductImageKey(productOrKey)];
 }

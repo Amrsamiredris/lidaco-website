@@ -1,8 +1,21 @@
 // LIDACO Product Catalogue Data
 
+export type ProductImageSlug =
+  | "bam-mazafati"
+  | "rabi"
+  | "kabkab"
+  | "piarom"
+  | "akbari"
+  | "ahmad-aghaei"
+  | "fandoghi"
+  | "kalleh-ghouchi"
+  | "pistachio-kernels"
+  | "pistachio-powder";
+
 export type Product = {
   name: string;
   kind: "date" | "pist";
+  image: ProductImageSlug;
   eyebrow: string;
   tag: string;
   specs: [string, string][];
@@ -12,6 +25,7 @@ export const DATES: Product[] = [
   {
     name: "Bam Mazafati",
     kind: "date",
+    image: "bam-mazafati",
     eyebrow: "Premium Iranian Date",
     tag: "Cold storage",
     specs: [
@@ -24,6 +38,7 @@ export const DATES: Product[] = [
   {
     name: "Rabi",
     kind: "date",
+    image: "rabi",
     eyebrow: "Semi-dry Date",
     tag: "Bulk supply",
     specs: [
@@ -36,6 +51,7 @@ export const DATES: Product[] = [
   {
     name: "Kabkab",
     kind: "date",
+    image: "kabkab",
     eyebrow: "Semi-dry Date",
     tag: "Export grade",
     specs: [
@@ -48,6 +64,7 @@ export const DATES: Product[] = [
   {
     name: "Piarom",
     kind: "date",
+    image: "piarom",
     eyebrow: "Premium Dry Date",
     tag: "Premium grade",
     specs: [
@@ -63,6 +80,7 @@ export const PISTACHIOS: Product[] = [
   {
     name: "Akbari",
     kind: "pist",
+    image: "akbari",
     eyebrow: "Long Pistachio",
     tag: "Premium grade",
     specs: [
@@ -75,6 +93,7 @@ export const PISTACHIOS: Product[] = [
   {
     name: "Ahmad Aghaei",
     kind: "pist",
+    image: "ahmad-aghaei",
     eyebrow: "Long Pistachio",
     tag: "Export grade",
     specs: [
@@ -87,6 +106,7 @@ export const PISTACHIOS: Product[] = [
   {
     name: "Fandoghi",
     kind: "pist",
+    image: "fandoghi",
     eyebrow: "Round Pistachio",
     tag: "Bulk supply",
     specs: [
@@ -99,6 +119,7 @@ export const PISTACHIOS: Product[] = [
   {
     name: "Kalleh Ghouchi",
     kind: "pist",
+    image: "kalleh-ghouchi",
     eyebrow: "Jumbo Pistachio",
     tag: "Premium grade",
     specs: [
@@ -111,6 +132,7 @@ export const PISTACHIOS: Product[] = [
   {
     name: "Pistachio Kernels",
     kind: "pist",
+    image: "pistachio-kernels",
     eyebrow: "Shelled Green Kernel",
     tag: "Export grade",
     specs: [
@@ -123,6 +145,7 @@ export const PISTACHIOS: Product[] = [
   {
     name: "Pistachio Powder",
     kind: "pist",
+    image: "pistachio-powder",
     eyebrow: "Ground Kernel",
     tag: "Bulk supply",
     specs: [
