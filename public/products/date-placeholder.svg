@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" fill="none" role="img" aria-label="Date product placeholder">
+  <defs>
+    <linearGradient id="date-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3D1A0C"/>
+      <stop offset="100%" stop-color="#1A0A03"/>
+    </linearGradient>
+    <radialGradient id="date-glow" cx="72%" cy="28%" r="55%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="440" fill="url(#date-bg)"/>
+  <rect width="800" height="440" fill="url(#date-glow)"/>
+  <circle cx="620" cy="120" r="72" fill="#C9A84C" fill-opacity="0.08"/>
+  <circle cx="180" cy="320" r="96" fill="#A85C30" fill-opacity="0.12"/>
+  <path d="M400 148c-38 0-68 30-68 68 0 52 68 116 68 116s68-64 68-116c0-38-30-68-68-68z" fill="#C9A84C" fill-opacity="0.22"/>
+  <text x="400" y="392" text-anchor="middle" fill="#C9A84C" fill-opacity="0.45" font-family="Georgia, serif" font-size="28">&#10022;</text>
+</svg>

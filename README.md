@@ -1,36 +1,166 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LIDACO — Premium Iranian Agricultural Export Website
 
-## Getting Started
+Production Next.js 14 website for LIDACO, a premium B2B agricultural export company sourcing dates and pistachios from Iran.
 
-First, run the development server:
+## 🚀 Quick Start
 
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+
+### Local Development
+
+1. **Install dependencies:**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Configure environment variables:**
+Create `.env.local` and add:
+```
+NEXT_PUBLIC_WEB3FORMS_KEY=your_web3forms_key
+NEXT_PUBLIC_WHATSAPP_NUMBER=989000000000
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Get your Web3Forms key at: https://web3forms.com
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Run development server:**
+```bash
+npm run dev
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-To learn more about Next.js, take a look at the following resources:
+### Build for Production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+```
+lidaco-website/
+├── app/
+│   ├── layout.tsx          # Root layout with fonts & metadata
+│   ├── page.tsx             # Home page
+│   ├── products/page.tsx    # Products catalogue
+│   ├── about/page.tsx       # About page
+│   ├── export/page.tsx      # Export & packaging
+│   ├── contact/page.tsx     # Contact form
+│   ├── sitemap.ts           # Dynamic sitemap
+│   ├── robots.ts            # Robots.txt
+│   └── globals.css          # Design system tokens
+├── components/
+│   ├── Nav.tsx              # Sticky navigation with mobile menu
+│   ├── Hero.tsx             # Hero section
+│   ├── TrustStrip.tsx       # Trust badges
+│   ├── ProductCard.tsx      # Product card component
+│   ├── ProductFilter.tsx    # Client-side product filter
+│   ├── AboutExcerpt.tsx     # About teaser
+│   ├── CTABanner.tsx        # Call-to-action banner
+│   ├── Footer.tsx           # Site footer
+│   ├── WhatsAppFloat.tsx    # Floating WhatsApp button
+│   ├── ContactForm.tsx      # Web3Forms contact form
+│   ├── ScrollToTop.tsx      # Scroll to top button
+│   ├── LanguageToggle.tsx   # Language toggle stub
+│   └── ...                  # Primitive components
+├── lib/
+│   └── data.ts              # Product catalogue data
+└── public/
+    └── lidaco-mark.svg      # Brand logo
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Design System
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The entire design system is configured in `app/globals.css` using Tailwind CSS v4's `@theme` directive:
+
+### Colors
+- **Browns**: `lid-brown-{950,900,800,700,400}`
+- **Sand**: `lid-sand-{50,100,300,700}`
+- **Olive**: `lid-olive-{800,600,400}`
+- **Gold**: `lid-gold-{700,500,300}`
+- **Cream**: `lid-cream`
+
+### Typography
+- **Display**: Cormorant Garamond (600) for headings
+- **UI**: DM Sans (300/400/500) for body and UI
+
+### Brand Rules
+- No exclamation marks
+- No emoji
+- No retail language (never "Shop", "Buy", "Sale")
+- Use "Request a quote", "View products", "Enquire"
+- Uppercase labels with wide tracking
+- Minimal corner radius (2–4px)
+- Gold used sparingly as accent
+
+## 🔄 Updating Content
+
+### Product Catalogue
+Edit `lib/data.ts` to update products:
+- `DATES` — Date varieties from Bam
+- `PISTACHIOS` — Pistachio varieties from Rafsanjan
+- `FEATURED` — Products shown on homepage
+
+### Contact Information
+Update environment variables in `.env.local`:
+- `NEXT_PUBLIC_WHATSAPP_NUMBER` — WhatsApp contact number
+- `NEXT_PUBLIC_WEB3FORMS_KEY` — Web3Forms access key
+
+### Swapping Placeholder Images
+Replace warm gradient placeholders with real product photos:
+1. Add images to `public/` directory
+2. Update `ProductCard.tsx` to use `<Image>` instead of gradient div
+3. Update `AboutExcerpt.tsx` placeholder sections
+
+## 🌐 Deployment to Vercel
+
+### Option 1: Vercel Dashboard
+
+1. Push code to GitHub
+2. Import repository in Vercel dashboard
+3. Add environment variables:
+   - `NEXT_PUBLIC_WEB3FORMS_KEY`
+   - `NEXT_PUBLIC_WHATSAPP_NUMBER`
+4. Deploy
+
+### Option 2: Vercel CLI
+
+```bash
+npm i -g vercel
+vercel login
+vercel --prod
+```
+
+Set environment variables via Vercel dashboard under Project Settings → Environment Variables.
+
+## 📦 Features
+
+✅ 5 fully-responsive pages
+✅ Sticky navigation with mobile hamburger menu
+✅ Client-side product filtering (All / Dates / Pistachios)
+✅ Web3Forms contact form integration
+✅ WhatsApp floating button
+✅ Scroll-to-top button
+✅ Language toggle stub (EN / 中文 / عربي)
+✅ SEO metadata for all pages
+✅ Automatic sitemap & robots.txt
+✅ Tailwind CSS v4 design system
+✅ Next.js 14 App Router
+✅ TypeScript (strict mode)
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Styling**: Tailwind CSS v4
+- **Language**: TypeScript
+- **Fonts**: Google Fonts (Cormorant Garamond + DM Sans)
+- **Icons**: Lucide React
+- **Forms**: Web3Forms
+- **Deployment**: Vercel
+
+## 📄 License
+
+© 2026 LIDACO Agricultural Export — From Iranian Farms to the World

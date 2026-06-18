@@ -1,26 +1,98 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@plugin "tailwindcss-animate";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ========================================
+     LIDACO Design System — Color Tokens
+     ======================================== */
+
+  /* Brand Browns */
+  --color-lid-brown-950: #1A0A03;
+  --color-lid-brown-900: #2C1108;
+  --color-lid-brown-800: #3D1A0C;
+  --color-lid-brown-700: #5C2910;
+  --color-lid-brown-400: #A85C30;
+
+  /* Sand Neutrals */
+  --color-lid-sand-50: #FAF7F2;
+  --color-lid-sand-100: #F0EBE0;
+  --color-lid-sand-300: #D9CFBE;
+  --color-lid-sand-700: #7A6A52;
+
+  /* Olive (Pistachio) */
+  --color-lid-olive-800: #2A3018;
+  --color-lid-olive-600: #4A5828;
+  --color-lid-olive-400: #6E8540;
+
+  /* Gold Accent */
+  --color-lid-gold-700: #8A6A10;
+  --color-lid-gold-500: #C9A84C;
+  --color-lid-gold-300: #E8D090;
+
+  /* Cream */
+  --color-lid-cream: #FBF6EE;
+
+  /* Semantic On-Dark */
+  --color-on-dark-dim: #C9BCA8;
+
+  /* ========================================
+     Font Families
+     ======================================== */
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
+  --font-ui: var(--font-dm-sans), "Helvetica Neue", Arial, sans-serif;
+
+  /* ========================================
+     Border Radius (minimal)
+     ======================================== */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-img: 4px;
+
+  /* ========================================
+     Shadows (soft, low, warm-tinted)
+     ======================================== */
+  --shadow-card: 0 1px 2px rgba(44, 17, 8, 0.04), 0 8px 28px rgba(44, 17, 8, 0.06);
+  --shadow-hover: 0 2px 4px rgba(44, 17, 8, 0.06), 0 16px 44px rgba(44, 17, 8, 0.10);
+
+  /* ========================================
+     Transitions
+     ======================================== */
+  --ease-lid: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --duration-lid: 240ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ========================================
+   Base Styles
+   ======================================== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-lid-sand-50);
+  color: var(--color-lid-sand-700);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 900px) {
+  .wrap {
+    padding: 0 24px;
+  }
 }
